@@ -51,7 +51,7 @@
     <article>
       <section class="question">Les informations contenu dans l’élément &lt;head&gt; sont affichées sur la page web ?</section>
       <section class="choice">
-        <input type="radio" name="first" id="1true" value="choice" class="true" checked/><label for="1true">VRAI</label>
+        <input type="radio" name="first" id="1true" value="choice"  checked/><label for="1true">VRAI</label>
         <input type="radio" name="first" id="1false" value="choice" /><label for="1false">FAUX</label>
       </section>
       <section class="arg">Les informations que contient l'en-tête ne sont pas affichées sur la page, ce sont simplement des informations générales à destination de l'ordinateur.</section>
@@ -134,21 +134,21 @@
     function displayResults() {
       // console.log(choices);
       for (var choice in choices) {
-
+      
         if (choices[choice].checked == true) {
           var parseAnswer = choices[choice].id.substr(1);
           choiceAnswer.push(parseAnswer);
         }     
       }
-      // for (var ans in choiceAnswer) {
-      
-      //     console.log(ans + " " + choiceAnswer[ans]+" : "+ ans + " " + questions[ans].answer);
-        
+      // for (var ans in choiceAnswer) {    
+      //     console.log(ans + " " + choiceAnswer[ans]+" : "+ ans + " " + questions[ans].answer);        
       // }
       for (var ans in choiceAnswer) {
         if (choiceAnswer[ans] == questions[ans].answer) {
-          console.log(ans + " " + questions[ans].argument);
-        } 
+          console.log("Question " + (Number(ans)+1) + " JUSTE => " + questions[ans].argument);
+        } else {
+          console.log("Question " + (Number(ans)+1) + " FAUX");
+        }
       }
     } 
   
