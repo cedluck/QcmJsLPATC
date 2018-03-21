@@ -51,7 +51,7 @@
     <article>
       <section class="question">Les informations contenu dans l’élément &lt;head&gt; sont affichées sur la page web ?</section>
       <section class="choice">
-        <input type="radio" name="first" id="1true" value="choice"  checked/><label for="1true">VRAI</label>
+        <input type="radio" name="first" id="1true" value="choice" class="true" checked/><label for="1true">VRAI</label>
         <input type="radio" name="first" id="1false" value="choice" /><label for="1false">FAUX</label>
       </section>
       <section class="arg">Les informations que contient l'en-tête ne sont pas affichées sur la page, ce sont simplement des informations générales à destination de l'ordinateur.</section>
@@ -103,27 +103,27 @@
     var questions = [
       {
         "question": "Les informations contenu dans l’élément <head> sont affichées sur la page web",
-        "answer": "false",
+        "answer": false,
         "argument": "Les informations que contient l'en-tête ne sont pas affichées sur la page, ce sont simplement des informations générales à destination de l'ordinateur"
       },
       {
         "question": "La balise <title> sert à créer des titres qui seront affichés dans la page web",
-        "answer": "true",
+        "answer": true,
         "argument": "La balise <title> affiche le titre de la page dans la barre de titre du navigateur"
       },
       {
         "question": "En xHTML strict, l'élément body peut contenir du texte",
-        "answer": "false",
+        "answer": false,
         "argument": "Le texte doit être encapsulé, par ex. dans un élément p de paragraphe"
       },
       {
         "question": "Le footer doit apparaitre en haut de la page",
-        "answer": "false",
+        "answer": false,
         "argument": "Le footer doit apparaître en bas de la page"
       },
       {
         "question": "Le liens avec le fichier css est contenu dans un balise <link> dans le header de la page",
-        "answer": "true",
+        "answer": true,
         "argument": "De plus il doit comporter la propriété rel=\"stylesheet\""
       }
     ];
@@ -134,23 +134,26 @@
     function displayResults() {
       // console.log(choices);
       for (var choice in choices) {
-      
+
         if (choices[choice].checked == true) {
           var parseAnswer = choices[choice].id.substr(1);
           choiceAnswer.push(parseAnswer);
         }     
       }
-      // for (var ans in choiceAnswer) {    
-      //     console.log(ans + " " + choiceAnswer[ans]+" : "+ ans + " " + questions[ans].answer);        
-      // }
       for (var ans in choiceAnswer) {
-        if (choiceAnswer[ans] == questions[ans].answer) {
-          console.log("Question " + (Number(ans)+1) + " JUSTE => " + questions[ans].argument);
-        } else {
-          console.log("Question " + (Number(ans)+1) + " FAUX");
+      
+          console.log(choiceAnswer[ans]+" : "+ questions[ans].answer);
+        
+      }
+      for (var ans in choiceAnswer) {
+        if (choiceAnswer[ans] = questions[ans].answer) {
+          console.log(questions[ans].argument);
         }
       }
-    } 
+
+        
+      }
+      
   
     
     validation.addEventListener("click", displayResults);
