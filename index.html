@@ -51,8 +51,8 @@
     <article>
       <section class="question">Les informations contenu dans l’élément &lt;head&gt; sont affichées sur la page web ?</section>
       <section class="choice">
-        <input type="radio" name="first" id="firstTrue" value="choice" checked/><label for="firstTrue">VRAI</label>
-        <input type="radio" name="first" id="firstFalse" value="choice" /><label for="firstFalse">FAUX</label>
+        <input type="radio" name="first" id="1true" value="choice" class="true" checked/><label for="1true">VRAI</label>
+        <input type="radio" name="first" id="1false" value="choice" /><label for="1false">FAUX</label>
       </section>
       <section class="arg">Les informations que contient l'en-tête ne sont pas affichées sur la page, ce sont simplement des informations générales à destination de l'ordinateur.</section>
     </article>
@@ -60,8 +60,8 @@
     <article>
       <section class="question">La balise &lt;title&gt; sert à créer des titres qui seront affichés dans la page web?</section>
       <section class="choice">
-        <input type="radio" name="second" id="secondTrue" value="choice" checked/><label for="secondTrue">VRAI</label>
-        <input type="radio" name="second" id="secondFalse" value="choice" /><label for="secondFalse">FAUX</label>
+        <input type="radio" name="second" id="2true" value="choice" checked/><label for="2true">VRAI</label>
+        <input type="radio" name="second" id="2false" value="choice" /><label for="2false">FAUX</label>
       </section>
       <section class="arg">La balise &lt;title&gt; affiche le titre de la page dans la barre de titre du navigateur
         à destination de l'ordinateur</section>
@@ -70,8 +70,8 @@
     <article>
       <section class="question">En xHTML strict, l'élément body peut contenir du texte ?</section>
       <section class="choice">
-        <input type="radio" name="third" id="thirdTrue" value="choice" checked/><label for="thirdTrue">VRAI</label>
-        <input type="radio" name="third" id="thirdFalse" value="choice" /><label for="thirdFalse">FAUX</label>
+        <input type="radio" name="third" id="3true" value="choice" checked/><label for="3true">VRAI</label>
+        <input type="radio" name="third" id="3false" value="choice" /><label for="3false">FAUX</label>
       </section>
       <section class="arg">Le texte doit être encapsulé, par ex. dans un élément p de paragraphe.</section>
     </article>
@@ -79,8 +79,8 @@
     <article>
       <section class="question">Le footer doit apparaitre en haut de la page ?</section>
       <section class="choice">
-        <input type="radio" name="forth" id="forthTrue" value="choice" checked/><label for="forthTrue">VRAI</label>
-        <input type="radio" name="forth" id="forthFalse" value="choice" /><label for="forthFalse">FAUX</label>
+        <input type="radio" name="forth" id="4true" value="choice" checked/><label for="4true">VRAI</label>
+        <input type="radio" name="forth" id="4false" value="choice" /><label for="4false">FAUX</label>
       </section>
       <section class="arg">Le footer doit apparaître en bas de la page.</section>
     </article>
@@ -88,8 +88,8 @@
     <article>
       <section class="question">Le liens avec le fichier css est contenu dans un balise &lt;link&gt; dans le header de la page ?</section>
       <section class="choice">
-        <input type="radio" name="fith" id="fithTrue" value="choice" checked/><label for="fithTrue">VRAI</label>
-        <input type="radio" name="fith" id="fithFalse" value="choice" /><label for="fithFalse">FAUX</label>
+        <input type="radio" name="fith" id="5true" value="choice" checked/><label for="5true">VRAI</label>
+        <input type="radio" name="fith" id="5false" value="choice" /><label for="5false">FAUX</label>
       </section>
       <section class="arg">De plus il doit comporter la propriété rel="stylesheet".</section>
     </article>
@@ -97,6 +97,70 @@
   <footer>
     <input type="button" value="Vérifier" id="validation">[]
   </footer>
+  <script>
+ 
+
+    var questions = [
+      {
+        "question": "Les informations contenu dans l’élément <head> sont affichées sur la page web",
+        "answer": false,
+        "argument": "Les informations que contient l'en-tête ne sont pas affichées sur la page, ce sont simplement des informations générales à destination de l'ordinateur"
+      },
+      {
+        "question": "La balise <title> sert à créer des titres qui seront affichés dans la page web",
+        "answer": true,
+        "argument": "La balise <title> affiche le titre de la page dans la barre de titre du navigateur"
+      },
+      {
+        "question": "En xHTML strict, l'élément body peut contenir du texte",
+        "answer": false,
+        "argument": "Le texte doit être encapsulé, par ex. dans un élément p de paragraphe"
+      },
+      {
+        "question": "Le footer doit apparaitre en haut de la page",
+        "answer": false,
+        "argument": "Le footer doit apparaître en bas de la page"
+      },
+      {
+        "question": "Le liens avec le fichier css est contenu dans un balise <link> dans le header de la page",
+        "answer": true,
+        "argument": "De plus il doit comporter la propriété rel=\"stylesheet\""
+      }
+    ];
+
+    var choices = document.querySelectorAll('input[value="choice"]');
+    var validation = document.getElementById("validation");
+    var choiceAnswer = new Array;
+    function displayResults() {
+      // console.log(choices);
+      for (var choice in choices) {
+
+        if (choices[choice].checked == true) {
+          var parseAnswer = choices[choice].id.substr(1);
+          choiceAnswer.push(parseAnswer);
+        }     
+      }
+      for (var ans in choiceAnswer) {
+      
+          console.log(choiceAnswer[ans]+" : "+ questions[ans].answer);
+        
+      }
+      for (var ans in choiceAnswer) {
+        if (choiceAnswer[ans] = questions[ans].answer) {
+          console.log(questions[ans].argument);
+        }
+      }
+
+        
+      }
+      
   
+    
+    validation.addEventListener("click", displayResults);
+
+
+
+
+  </script>
 </body>
 </html>
