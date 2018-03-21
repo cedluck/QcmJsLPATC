@@ -107,9 +107,9 @@
         "argument": "Les informations que contient l'en-tête ne sont pas affichées sur la page, ce sont simplement des informations générales à destination de l'ordinateur"
       },
       {
-        "question": "La balise &lt;title&gt; sert à créer des titres qui seront affichés dans la page web",
+        "question": "La balise <title> sert à créer des titres qui seront affichés dans la page web",
         "answer": "true",
-        "argument": "La balise &lt;title&gt; affiche le titre de la page dans la barre de titre du navigateur"
+        "argument": "La balise <title> affiche le titre de la page dans la barre de titre du navigateur"
       },
       {
         "question": "En xHTML strict, l'élément body peut contenir du texte",
@@ -129,13 +129,10 @@
     ];
 
     var choices = document.querySelectorAll('input[value="choice"]');
-    console.log(choices);
     var validation = document.getElementById("validation");
-    var argEl = document.querySelectorAll(".arg");
-   
+    var choiceAnswer = new Array;
     function displayResults() {
-       var choiceAnswer = new Array;
-      console.log(choiceAnswer);
+      // console.log(choices);
       for (var choice in choices) {
       
         if (choices[choice].checked == true) {
@@ -148,16 +145,9 @@
       // }
       for (var ans in choiceAnswer) {
         if (choiceAnswer[ans] == questions[ans].answer) {
-          argEl[ans].innerHTML = questions[ans].argument;       
-          argEl[ans].style.display = "block";
-          argEl[ans].style.background = "#54dd5f";
-          
-          // console.log("Question " + (Number(ans)+1) + " JUSTE => " + questions[ans].argument);
+          console.log("Question " + (Number(ans)+1) + " JUSTE => " + questions[ans].argument);
         } else {
-          argEl[ans].style.display = "block";
-          argEl[ans].innerHTML = "FAUX";
-          argEl[ans].style.background = "#d43131";
-          // console.log("Question " + (Number(ans)+1) + " FAUX");
+          console.log("Question " + (Number(ans)+1) + " FAUX");
         }
       }
     } 
