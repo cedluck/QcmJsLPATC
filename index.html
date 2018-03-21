@@ -97,8 +97,8 @@
   <footer>
     <input type="button" value="Vérifier" id="validation">[]
   </footer>
-  <script>
- 
+  <script> 
+
 
     var questions = [
       {
@@ -107,7 +107,7 @@
         "argument": "Les informations que contient l'en-tête ne sont pas affichées sur la page, ce sont simplement des informations générales à destination de l'ordinateur"
       },
       {
-        "question": "La balise <title> sert à créer des titres qui seront affichés dans la page web",
+        "question": "La balise <title> sert à créer des titres qui seront affichés dans la page web",
         "answer": "true",
         "argument": "La balise <title> affiche le titre de la page dans la barre de titre du navigateur"
       },
@@ -130,29 +130,32 @@
 
     var choices = document.querySelectorAll('input[value="choice"]');
     var validation = document.getElementById("validation");
-    var choiceAnswer = new Array;
+    var argEl = document.querySelectorAll(".arg"); 
+  
     function displayResults() {
-      // console.log(choices);
+       var choiceAnswer = new Array; 
       for (var choice in choices) {
-      
+
         if (choices[choice].checked == true) {
           var parseAnswer = choices[choice].id.substr(1);
           choiceAnswer.push(parseAnswer);
-        }     
-      }
-      // for (var ans in choiceAnswer) {    
-      //     console.log(ans + " " + choiceAnswer[ans]+" : "+ ans + " " + questions[ans].answer);        
-      // }
-      for (var ans in choiceAnswer) {
-        if (choiceAnswer[ans] == questions[ans].answer) {
-          console.log("Question " + (Number(ans)+1) + " JUSTE => " + questions[ans].argument);
-        } else {
-          console.log("Question " + (Number(ans)+1) + " FAUX");
         }
       }
-    } 
-  
-    
+
+      for (var ans in choiceAnswer) {
+        if (choiceAnswer[ans] == questions[ans].answer) {
+          argEl[ans].innerHTML = questions[ans].argument;
+          argEl[ans].style.display = "block";
+          argEl[ans].style.background = "#54dd5f";
+        } else {
+           argEl[ans].style.display = "block";
+          argEl[ans].innerHTML = "FAUX";
+          argEl[ans].style.background = "#d43131"; 
+        }
+      }
+    }
+
+
     validation.addEventListener("click", displayResults);
 
 
