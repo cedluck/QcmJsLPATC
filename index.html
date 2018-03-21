@@ -4,9 +4,99 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>appli JS</title>
+  <title>QCD JS</title>
 </head>
+<style>
+  body{
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    }
+  #main{
+    padding: 10px;
+    width: 800px;
+  }
+  article{
+    margin-bottom: 10px;
+    border-bottom: 2px solid #222;
+  }
+  input[type="radio"]{
+    visibility: hidden;
+  }
+  section{
+    margin: 10px;
+  }
+  label{
+    border: 2px solid #222;
+    padding: 4px;
+    font-weight: bold;
+    border-radius: 4px;
+  }
+  input[type="radio"]:checked+label {
+    background-color: rgb(84, 121, 221);
+    color: #ffffff;
+  }
+  .arg{
+    display: none;
+  }
+  footer {
+    padding: 10px;
+  }
+</style>
 <body>
+  <header>
+    <h1>QCD Langage Web</h1>
+  </header>
+  <main id="main">
+    <article>
+      <section class="question">Les informations contenu dans l’élément &lt;head&gt; sont affichées sur la page web ?</section>
+      <section class="choice">
+        <input type="radio" name="first" id="firstTrue" value="choice" checked/><label for="firstTrue">VRAI</label>
+        <input type="radio" name="first" id="firstFalse" value="choice" /><label for="firstFalse">FAUX</label>
+      </section>
+      <section class="arg">Les informations que contient l'en-tête ne sont pas affichées sur la page, ce sont simplement des informations générales à destination de l'ordinateur.</section>
+    </article>
 
+    <article>
+      <section class="question">La balise &lt;title&gt; sert à créer des titres qui seront affichés dans la page web?</section>
+      <section class="choice">
+        <input type="radio" name="second" id="secondTrue" value="choice" checked/><label for="secondTrue">VRAI</label>
+        <input type="radio" name="second" id="secondFalse" value="choice" /><label for="secondFalse">FAUX</label>
+      </section>
+      <section class="arg">La balise &lt;title&gt; affiche le titre de la page dans la barre de titre du navigateur
+        à destination de l'ordinateur</section>
+    </article>
+
+    <article>
+      <section class="question">En xHTML strict, l'élément body peut contenir du texte ?</section>
+      <section class="choice">
+        <input type="radio" name="third" id="thirdTrue" value="choice" checked/><label for="thirdTrue">VRAI</label>
+        <input type="radio" name="third" id="thirdFalse" value="choice" /><label for="thirdFalse">FAUX</label>
+      </section>
+      <section class="arg">Le texte doit être encapsulé, par ex. dans un élément p de paragraphe.</section>
+    </article>
+
+    <article>
+      <section class="question">Le footer doit apparaitre en haut de la page ?</section>
+      <section class="choice">
+        <input type="radio" name="forth" id="forthTrue" value="choice" checked/><label for="forthTrue">VRAI</label>
+        <input type="radio" name="forth" id="forthFalse" value="choice" /><label for="forthFalse">FAUX</label>
+      </section>
+      <section class="arg">Le footer doit apparaître en bas de la page.</section>
+    </article>
+
+    <article>
+      <section class="question">Le liens avec le fichier css est contenu dans un balise &lt;link&gt; dans le header de la page ?</section>
+      <section class="choice">
+        <input type="radio" name="fith" id="fithTrue" value="choice" checked/><label for="fithTrue">VRAI</label>
+        <input type="radio" name="fith" id="fithFalse" value="choice" /><label for="fithFalse">FAUX</label>
+      </section>
+      <section class="arg">De plus il doit comporter la propriété rel="stylesheet".</section>
+    </article>
+  </main>
+  <footer>
+    <input type="button" value="Vérifier" id="validation">[]
+  </footer>
+  
 </body>
 </html>
