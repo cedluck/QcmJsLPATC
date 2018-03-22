@@ -95,7 +95,7 @@
     </article>
   </main>
   <footer>
-    <input type="button" value="Vérifier" id="validation">[]
+    <input type="button" value="Vérifier" id="validation">
   </footer>
   <script> 
 
@@ -130,10 +130,10 @@
 
     var choices = document.querySelectorAll('input[value="choice"]');
     var validation = document.getElementById("validation");
-    var argEl = document.querySelectorAll(".arg"); 
-  
+    var argEl = document.querySelectorAll(".arg");
+
     function displayResults() {
-       var choiceAnswer = new Array; 
+      var choiceAnswer = new Array;
       for (var choice in choices) {
 
         if (choices[choice].checked == true) {
@@ -148,9 +148,9 @@
           argEl[ans].style.display = "block";
           argEl[ans].style.background = "#54dd5f";
         } else {
-           argEl[ans].style.display = "block";
+          argEl[ans].style.display = "block";
           argEl[ans].innerHTML = "FAUX";
-          argEl[ans].style.background = "#d43131"; 
+          argEl[ans].style.background = "#d43131";
         }
       }
     }
@@ -162,5 +162,6 @@
 
 
   </script>
+  
 </body>
 </html>
