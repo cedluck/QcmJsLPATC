@@ -49,49 +49,48 @@
   </header>
   <main id="main">
     <article>
-      <section class="question">Les informations contenu dans l’élément &lt;head&gt; sont affichées sur la page web ?</section>
+      <section class="question"></section>
       <section class="choice">
         <input type="radio" name="first" id="1true" value="choice"  checked/><label for="1true">VRAI</label>
         <input type="radio" name="first" id="1false" value="choice" /><label for="1false">FAUX</label>
       </section>
-      <section class="arg">Les informations que contient l'en-tête ne sont pas affichées sur la page, ce sont simplement des informations générales à destination de l'ordinateur.</section>
+      <section class="arg"></section>
     </article>
 
     <article>
-      <section class="question">La balise &lt;title&gt; sert à créer des titres qui seront affichés dans la page web?</section>
+      <section class="question"></section>
       <section class="choice">
         <input type="radio" name="second" id="2true" value="choice" checked/><label for="2true">VRAI</label>
         <input type="radio" name="second" id="2false" value="choice" /><label for="2false">FAUX</label>
       </section>
-      <section class="arg">La balise &lt;title&gt; affiche le titre de la page dans la barre de titre du navigateur
-        à destination de l'ordinateur</section>
+      <section class="arg"></section>
     </article>
 
     <article>
-      <section class="question">En xHTML strict, l'élément body peut contenir du texte ?</section>
+      <section class="question"></section>
       <section class="choice">
         <input type="radio" name="third" id="3true" value="choice" checked/><label for="3true">VRAI</label>
         <input type="radio" name="third" id="3false" value="choice" /><label for="3false">FAUX</label>
       </section>
-      <section class="arg">Le texte doit être encapsulé, par ex. dans un élément p de paragraphe.</section>
+      <section class="arg"></section>
     </article>
 
     <article>
-      <section class="question">Le footer doit apparaitre en haut de la page ?</section>
+      <section class="question"></section>
       <section class="choice">
         <input type="radio" name="forth" id="4true" value="choice" checked/><label for="4true">VRAI</label>
         <input type="radio" name="forth" id="4false" value="choice" /><label for="4false">FAUX</label>
       </section>
-      <section class="arg">Le footer doit apparaître en bas de la page.</section>
+      <section class="arg"></section>
     </article>
 
     <article>
-      <section class="question">Le liens avec le fichier css est contenu dans un balise &lt;link&gt; dans le header de la page ?</section>
+      <section class="question"></section>
       <section class="choice">
         <input type="radio" name="fith" id="5true" value="choice" checked/><label for="5true">VRAI</label>
         <input type="radio" name="fith" id="5false" value="choice" /><label for="5false">FAUX</label>
       </section>
-      <section class="arg">De plus il doit comporter la propriété rel="stylesheet".</section>
+      <section class="arg"></section>
     </article>
   </main>
   <footer>
@@ -102,14 +101,14 @@
 
     var questions = [
       {
-        "question": "Les informations contenu dans l’élément <head> sont affichées sur la page web",
+        "question": "Les informations contenu dans l’élément &lt;head&gt; sont affichées sur la page web",
         "answer": false,
         "argument": "Les informations que contient l'en-tête ne sont pas affichées sur la page, ce sont simplement des informations générales à destination de l'ordinateur"
       },
       {
-        "question": "La balise <title> sert à créer des titres qui seront affichés dans la page web",
+        "question": "La balise &lt;title&gt; sert à créer des titres qui seront affichés dans la page web",
         "answer": true,
-        "argument": "La balise <title> affiche le titre de la page dans la barre de titre du navigateur"
+        "argument": "La balise &lt;title&gt; affiche le titre de la page dans la barre de titre du navigateur"
       },
       {
         "question": "En xHTML strict, l'élément body peut contenir du texte",
@@ -122,12 +121,20 @@
         "argument": "Le footer doit apparaître en bas de la page"
       },
       {
-        "question": "Le liens avec le fichier css est contenu dans un balise <link> dans le header de la page",
+        "question": "Le liens avec le fichier css est contenu dans un balise &lt;link&gt; dans le header de la page",
         "answer": true,
         "argument": "De plus il doit comporter la propriété rel=\"stylesheet\""
+      },
+      {
+        "question":"aimez-vous les fraises ?",
+        "answer":true,
+        "argument": "surtout avec du sucre !!"
       }
     ];
-
+    var sectionEl = document.querySelectorAll (".question");
+    for(var i=0;i<sectionEl.length;i++){
+      sectionEl[i].innerHTML = questions[i].question;
+    }
     var choices = document.querySelectorAll('input[type="radio"]:checked');
     var validation = document.getElementById("validation");
     var argEl = document.querySelectorAll(".arg");
