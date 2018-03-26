@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,91 +8,57 @@
   <title>QCD JS</title>
 </head>
 <style>
-  body{
+  body {
     margin: 0;
     padding: 0;
     font-family: Arial, Helvetica, sans-serif;
-    }
-  #main{
+  }
+
+  #main {
     padding: 10px;
     width: 800px;
   }
-  article{
+
+  article {
     margin-bottom: 10px;
     border-bottom: 2px solid #222;
   }
-  input[type="radio"]{
+
+  input[type="radio"] {
     visibility: hidden;
   }
-  section{
+
+  section {
     margin: 10px;
   }
-  label{
+
+  label {
     border: 2px solid #222;
     padding: 4px;
     font-weight: bold;
     border-radius: 4px;
   }
+
   input[type="radio"]:checked+label {
     background-color: rgb(84, 121, 221);
     color: #ffffff;
   }
-  .arg{
+
+  .arg {
     display: none;
   }
+
   footer {
     padding: 10px;
   }
 </style>
+
 <body>
   <header>
     <h1>QCD Langage Web</h1>
   </header>
   <main id="main">
-    <article>
-      <section class="question"></section>
-      <section class="choice">
-        <input type="radio" name="first" id="1true" value="choice"  checked/><label for="1true">VRAI</label>
-        <input type="radio" name="first" id="1false" value="choice" /><label for="1false">FAUX</label>
-      </section>
-      <section class="arg"></section>
-    </article>
 
-    <article>
-      <section class="question"></section>
-      <section class="choice">
-        <input type="radio" name="second" id="2true" value="choice" checked/><label for="2true">VRAI</label>
-        <input type="radio" name="second" id="2false" value="choice" /><label for="2false">FAUX</label>
-      </section>
-      <section class="arg"></section>
-    </article>
-
-    <article>
-      <section class="question"></section>
-      <section class="choice">
-        <input type="radio" name="third" id="3true" value="choice" checked/><label for="3true">VRAI</label>
-        <input type="radio" name="third" id="3false" value="choice" /><label for="3false">FAUX</label>
-      </section>
-      <section class="arg"></section>
-    </article>
-
-    <article>
-      <section class="question"></section>
-      <section class="choice">
-        <input type="radio" name="forth" id="4true" value="choice" checked/><label for="4true">VRAI</label>
-        <input type="radio" name="forth" id="4false" value="choice" /><label for="4false">FAUX</label>
-      </section>
-      <section class="arg"></section>
-    </article>
-
-    <article>
-      <section class="question"></section>
-      <section class="choice">
-        <input type="radio" name="fith" id="5true" value="choice" checked/><label for="5true">VRAI</label>
-        <input type="radio" name="fith" id="5false" value="choice" /><label for="5false">FAUX</label>
-      </section>
-      <section class="arg"></section>
-    </article>
   </main>
   <footer>
     <input type="button" value="Vérifier" id="validation">
@@ -125,24 +92,33 @@
         "answer": true,
         "argument": "De plus il doit comporter la propriété rel=\"stylesheet\""
       },
-      {
-        "question":"aimez-vous les fraises ?",
-        "answer":true,
-        "argument": "surtout avec du sucre !!"
-      }
     ];
-    var sectionEl = document.querySelectorAll (".question");
-    for(var i=0;i<sectionEl.length;i++){
+    var sectionEl = document.querySelectorAll(".question");
+    for (var i = 0; i < sectionEl.length; i++) {
       sectionEl[i].innerHTML = questions[i].question;
     }
+    for (var i = 0; i < questions.length; i++) {
+      document.getElementById("main").insertAdjacentHTML("beforeend",
+        `<article>
+          <section class="question">${questions[i].question} </section>
+          <section class="choice">
+            <input type="radio" name="${i} " id="${i}true" value="choice" /><label for="${i}true">VRAI</label>
+            <input type="radio" name="${i}" id="${i}false" value="choice" /><label for="${i}false">FAUX</label>
+          </section>
+          <section class="arg">${questions[i].argument}</section>
+        </article>`);
+    }
+
+
     var choices = document.querySelectorAll('input[type="radio"]:checked');
     var validation = document.getElementById("validation");
     var argEl = document.querySelectorAll(".arg");
-    
+
     function displayResults() {
-      for(var i=0;i<choices.length;i++){
-  
-        if (choices[i].checked ===  questions[i].answer) {
+      console.log(choices[0].checked);
+      for (var i = 0; i < choices.length; i++) {
+
+        if (choices[i].checked === questions[i].answer) {
           argEl[i].innerHTML = questions[i].argument;
           argEl[i].style.display = "block";
           argEl[i].style.background = "#54dd5f";
@@ -157,6 +133,7 @@
     validation.addEventListener("click", displayResults);
 
   </script>
-  
+
 </body>
+
 </html>
