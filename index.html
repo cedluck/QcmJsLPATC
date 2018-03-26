@@ -69,40 +69,37 @@
     var questions = [
       {
         "question": "Les informations contenu dans l’élément &lt;head&gt; sont affichées sur la page web",
-        "answer": false,
+        "answer": "false",
         "argument": "Les informations que contient l'en-tête ne sont pas affichées sur la page, ce sont simplement des informations générales à destination de l'ordinateur"
       },
       {
         "question": "La balise &lt;title&gt; sert à créer des titres qui seront affichés dans la page web",
-        "answer": true,
+        "answer": "true",
         "argument": "La balise &lt;title&gt; affiche le titre de la page dans la barre de titre du navigateur"
       },
       {
         "question": "En xHTML strict, l'élément body peut contenir du texte",
-        "answer": false,
+        "answer": "false",
         "argument": "Le texte doit être encapsulé, par ex. dans un élément p de paragraphe"
       },
       {
         "question": "Le footer doit apparaitre en haut de la page",
-        "answer": false,
+        "answer": "false",
         "argument": "Le footer doit apparaître en bas de la page"
       },
       {
         "question": "Le liens avec le fichier css est contenu dans un balise &lt;link&gt; dans le header de la page",
-        "answer": true,
+        "answer": "true",
         "argument": "De plus il doit comporter la propriété rel=\"stylesheet\""
-      },
+      }
     ];
-    var sectionEl = document.querySelectorAll(".question");
-    for (var i = 0; i < sectionEl.length; i++) {
-      sectionEl[i].innerHTML = questions[i].question;
-    }
+   
     for (var i = 0; i < questions.length; i++) {
       document.getElementById("main").insertAdjacentHTML("beforeend",
         `<article>
           <section class="question">${questions[i].question} </section>
           <section class="choice">
-            <input type="radio" name="${i} " id="${i}true" value="choice" /><label for="${i}true">VRAI</label>
+            <input type="radio" name="${i}" id="${i}true" value="choice" /><label for="${i}true">VRAI</label>
             <input type="radio" name="${i}" id="${i}false" value="choice" /><label for="${i}false">FAUX</label>
           </section>
           <section class="arg">${questions[i].argument}</section>
@@ -110,15 +107,17 @@
     }
 
 
-    var choices = document.querySelectorAll('input[type="radio"]:checked');
     var validation = document.getElementById("validation");
-    var argEl = document.querySelectorAll(".arg");
+ 
 
     function displayResults() {
-      console.log(choices[0].checked);
+      var choices = document.querySelectorAll('input[type="radio"]:checked');
+      var argEl = document.querySelectorAll(".arg");
       for (var i = 0; i < choices.length; i++) {
-
-        if (choices[i].checked === questions[i].answer) {
+        // console.log(choices[i].id.substr(1));
+        // console.log(choices[i].checked);
+        
+        if (choices[i].id.substr(1) === questions[i].answer) {
           argEl[i].innerHTML = questions[i].argument;
           argEl[i].style.display = "block";
           argEl[i].style.background = "#54dd5f";
