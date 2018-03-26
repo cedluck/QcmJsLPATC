@@ -40,12 +40,14 @@
   }
 
   input[type="radio"]:checked+label {
-    background-color: rgb(84, 121, 221);
+    background-color: #5479dd;
     color: #ffffff;
   }
 
   .arg {
     display: none;
+    padding: 5px;
+    border-radius: 5px;
   }
 
   footer {
@@ -55,69 +57,71 @@
 
 <body>
   <header>
-    <h1>QCD Langage Web</h1>
+    <h1>QCD Langage Web</h1><p></p>
   </header>
   <main id="main">
-
   </main>
+
   <footer>
     <input type="button" value="Vérifier" id="validation">
+    <p id="score"></p>
   </footer>
-  <script> 
-
-
+  <script>
     var questions = [
       {
         "question": "Les informations contenu dans l’élément &lt;head&gt; sont affichées sur la page web",
-        "answer": "false",
+        "answer": false,
         "argument": "Les informations que contient l'en-tête ne sont pas affichées sur la page, ce sont simplement des informations générales à destination de l'ordinateur"
       },
       {
         "question": "La balise &lt;title&gt; sert à créer des titres qui seront affichés dans la page web",
-        "answer": "true",
+        "answer": true,
         "argument": "La balise &lt;title&gt; affiche le titre de la page dans la barre de titre du navigateur"
       },
       {
         "question": "En xHTML strict, l'élément body peut contenir du texte",
-        "answer": "false",
+        "answer": false,
         "argument": "Le texte doit être encapsulé, par ex. dans un élément p de paragraphe"
       },
       {
         "question": "Le footer doit apparaitre en haut de la page",
-        "answer": "false",
+        "answer": false,
         "argument": "Le footer doit apparaître en bas de la page"
       },
       {
         "question": "Le liens avec le fichier css est contenu dans un balise &lt;link&gt; dans le header de la page",
-        "answer": "true",
+        "answer": true,
         "argument": "De plus il doit comporter la propriété rel=\"stylesheet\""
-      }
+      },
     ];
-   
+
     for (var i = 0; i < questions.length; i++) {
       document.getElementById("main").insertAdjacentHTML("beforeend",
         `<article>
-          <section class="question">${questions[i].question} </section>
-          <section class="choice">
-            <input type="radio" name="${i}" id="${i}true" value="choice" /><label for="${i}true">VRAI</label>
-            <input type="radio" name="${i}" id="${i}false" value="choice" /><label for="${i}false">FAUX</label>
-          </section>
-          <section class="arg">${questions[i].argument}</section>
-        </article>`);
+            <section class="question">${questions[i].question} </section>
+            <section class="choice">
+              <input type="radio" name="${i}" id="${i}true" value="choice" checked/><label for="${i}true">VRAI</label>
+              <input type="radio" name="${i}" id="${i}false" value="choice" /><label for="${i}false">FAUX</label>
+            </section>
+            <section class="arg">${questions[i].argument}</section>
+          </article>`);
     }
 
-
+    /*
+     *extracting DOM elements variables
+     */
+    var choices = document.querySelectorAll('input[type="radio"]:checked');
     var validation = document.getElementById("validation");
- 
-
+    var displayScore = document.getElementById("score");
+    var argEl = document.querySelectorAll(".arg");
+    
+    //displaying results on eventListener
     function displayResults() {
-      var choices = document.querySelectorAll('input[type="radio"]:checked');
-      var argEl = document.querySelectorAll(".arg");
+      var score = 0;   
       for (var i = 0; i < choices.length; i++) {
-        // console.log(choices[i].id.substr(1));
-        // console.log(choices[i].checked);
-        
-        if (choices[i].id.substr(1) === questions[i].answer) {
+        // console.log(choices[i].checked);       
+        if (choices[i].checked == questions[i].answer) { //conditional test
+          score += 1;
           argEl[i].innerHTML = questions[i].argument;
           argEl[i].style.display = "block";
           argEl[i].style.background = "#54dd5f";
@@ -127,12 +131,10 @@
           argEl[i].style.background = "#d43131";
         }
       }
-    }
-
+      displayScore.innerHTML = `<h3>Score : ${score} / ${questions.length}</h3>`;
+    }    
     validation.addEventListener("click", displayResults);
-
   </script>
 
 </body>
-
 </html>
